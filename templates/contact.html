@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - TechEmbed Innovations{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Page Header -->
+    <section class="mb-5 mt-5">
+        <h1 class="display-4 neon-text mb-3">Get In Touch</h1>
+        <p class="lead text-light">We'd Love to Hear From You</p>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="mb-5">
+        <div class="row g-4">
+            <!-- Contact Form -->
+            <div class="col-lg-8">
+                <div class="neon-card">
+                    <h3 class="neon-text mb-4"><i class="fas fa-envelope"></i> Send us a Message</h3>
+                    
+                    <form method="POST" action="/contact" class="needs-validation" novalidate>
+                        <div class="mb-4">
+                            <label for="name" class="form-label text-light">Full Name *</label>
+                            <input type="text" class="form-control form-control-neon" id="name" name="name" required>
+                            <div class="invalid-feedback text-danger">Please provide your name.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="email" class="form-label text-light">Email Address *</label>
+                            <input type="email" class="form-control form-control-neon" id="email" name="email" required>
+                            <div class="invalid-feedback text-danger">Please provide a valid email address.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="phone" class="form-label text-light">Phone Number *</label>
+                            <input type="tel" class="form-control form-control-neon" id="phone" name="phone" required>
+                            <div class="invalid-feedback text-danger">Please provide a phone number.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="message" class="form-label text-light">Message *</label>
+                            <textarea class="form-control form-control-neon" id="message" name="message" rows="6" required></textarea>
+                            <div class="invalid-feedback text-danger">Please provide a message.</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-neon btn-lg">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="col-lg-4">
+                <!-- Direct Contact -->
+                <div class="neon-card mb-4">
+                    <h5 class="neon-text mb-4"><i class="fas fa-info-circle"></i> Contact Information</h5>
+                    
+                    <div class="contact-item mb-4">
+                        <h6 class="neon-text mb-2"><i class="fas fa-envelope"></i> Email</h6>
+                        <p class="text-light">
+                            <a href="mailto:techembedinnovations@gmail.com" class="text-neon">techembedinnovations@gmail.com</a>
+                        </p>
+                        <p class="text-light small">We'll respond within 24 hours</p>
+                    </div>
+
+                    <div class="contact-item mb-4">
+                        <h6 class="neon-text mb-2"><i class="fas fa-phone"></i> Phone</h6>
+                        <p class="text-light">
+                            <a href="tel:+919008405328" class="text-neon">+91 9008405328</a><br>
+                            <a href="tel:+919986967709" class="text-neon">+91 9986967709</a>
+                        </p>
+                        <p class="text-light small">Monday - Friday, 9 AM - 6 PM IST</p>
+                    </div>
+
+                    <div class="contact-item mb-4">
+                        <h6 class="neon-text mb-2"><i class="fas fa-map-marker-alt"></i> Location</h6>
+                        <p class="text-light">India</p>
+                        <p class="text-light small">Currently operating across India with online classes</p>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="neon-card">
+                    <h5 class="neon-text mb-4"><i class="fas fa-link"></i> Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <a href="/internships" class="text-neon text-decoration-none hover-underline">
+                                <i class="fas fa-arrow-right"></i> Apply for Internship
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="/workshops" class="text-neon text-decoration-none hover-underline">
+                                <i class="fas fa-arrow-right"></i> Register for Workshop
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="/projects" class="text-neon text-decoration-none hover-underline">
+                                <i class="fas fa-arrow-right"></i> View Our Projects
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="/services" class="text-neon text-decoration-none hover-underline">
+                                <i class="fas fa-arrow-right"></i> Explore Services
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section>
+        <h2 class="section-title neon-text mb-4">Frequently Asked Questions</h2>
+        
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item bg-dark border-neon">
+                <h2 class="accordion-header">
+                    <button class="accordion-button btn-neon-link" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        <span class="neon-text">How do I apply for an internship?</span>
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-light">
+                        Simply visit our <a href="/internships" class="text-neon">Internships page</a> and fill out the application form. You can select from AI, Full-Stack, or Embedded Systems programs. We review applications on a rolling basis.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-dark border-neon">
+                <h2 class="accordion-header">
+                    <button class="accordion-button btn-neon-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        <span class="neon-text">What are the prerequisites?</span>
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-light">
+                        Basic knowledge of programming is recommended but not required. We provide foundational training for beginners. Passion for learning and dedication is what matters most.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-dark border-neon">
+                <h2 class="accordion-header">
+                    <button class="accordion-button btn-neon-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        <span class="neon-text">Are there any fees for internships?</span>
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-light">
+                        Internship program fees are very affordable. Selected candidates may also receive stipends. Contact us for detailed pricing information.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-dark border-neon">
+                <h2 class="accordion-header">
+                    <button class="accordion-button btn-neon-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                        <span class="neon-text">Can I do an internship while studying?</span>
+                    </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-light">
+                        Absolutely! We offer flexible schedules for working professionals and students. You can choose part-time or full-time internships based on your availability.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-dark border-neon">
+                <h2 class="accordion-header">
+                    <button class="accordion-button btn-neon-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                        <span class="neon-text">What about placement after internship?</span>
+                    </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-light">
+                        We provide job placement assistance and maintain relationships with leading tech companies. High performers have strong conversion opportunities to full-time roles.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-dark border-neon">
+                <h2 class="accordion-header">
+                    <button class="accordion-button btn-neon-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                        <span class="neon-text">Is there online and offline mode?</span>
+                    </button>
+                </h2>
+                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-light">
+                        Yes! We offer both online and offline training. Most programs are available in hybrid mode, giving you the flexibility to choose what works best for you.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% block extra_js %}
+<script>
+document.querySelectorAll('.accordion-button').forEach(button => {
+    button.addEventListener('click', function() {
+        setTimeout(() => {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            if (isExpanded) {
+                this.querySelector('.neon-text').style.color = 'var(--neon-blue)';
+            }
+        }, 100);
+    });
+});
+</script>
+{% endblock %}
+
+{% endblock %}
