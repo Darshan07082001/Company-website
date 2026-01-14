@@ -1,3 +1,4 @@
+// Copied from original project's static/js/main.js (adapted)
 // Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -9,15 +10,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect
-window.addEventListener('scroll', function() {
+// Navbar scroll effect (respects light theme)
+function updateNavbarBackground(){
     const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    const light = document.body.classList.contains('light-theme');
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(10, 14, 39, 0.98)';
+        navbar.style.background = light ? 'rgba(255,255,255,0.98)' : 'rgba(10, 14, 39, 0.98)';
     } else {
-        navbar.style.background = 'rgba(10, 14, 39, 0.95)';
+        navbar.style.background = light ? 'rgba(255,255,255,0.9)' : 'rgba(10, 14, 39, 0.95)';
     }
-});
+    // set computed text color from CSS variable when light theme active
+    if(light){
+        const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-light') || '#0a0e27';
+        navbar.style.color = textColor.trim();
+    } else {
+        navbar.style.color = '';
+    }
+}
+window.addEventListener('scroll', updateNavbarBackground);
+// also update on theme change and on load
+window.addEventListener('DOMContentLoaded', updateNavbarBackground);
+window.addEventListener('load', updateNavbarBackground);
+// observe body class changes (theme toggle) to refresh navbar
+const bodyObserver = new MutationObserver(updateNavbarBackground);
+bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
 // Fade in on scroll
 const observerOptions = {
@@ -25,7 +42,7 @@ const observerOptions = {
     rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver(function(entries) {
+const observerFade = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
@@ -40,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         card.style.transition = 'all 0.6s ease';
-        observer.observe(card);
+        observerFade.observe(card);
     });
 });
 

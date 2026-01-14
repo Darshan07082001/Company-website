@@ -1,3 +1,4 @@
+// Copied from original project's static/js/script.js (adapted)
 // ==================== SMOOTH SCROLL ==================== //
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -238,11 +239,9 @@ document.addEventListener('mousemove', function(e) {
 
 // ==================== KEYBOARD SHORTCUTS ==================== //
 document.addEventListener('keydown', function(e) {
-    // Home key
     if (e.key === 'Home') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    // End key
     if (e.key === 'End') {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
@@ -293,4 +292,42 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     });
 });
 
-console.log('✨ TechEmbed Innovations - Website Loaded Successfully ✨');
+console.log('✨ TechEmbed Innovations - Frontend scripts loaded ✨');
+
+// Workshop modal prefill (Bootstrap 5)
+document.addEventListener('show.bs.modal', function(e){
+    if(e.target && e.target.id === 'workshopModal'){
+        const button = e.relatedTarget;
+        if(!button) return;
+        const workshop = button.getAttribute('data-workshop');
+        const modal = document.getElementById('workshopModal');
+        const modalInput = modal.querySelector('#modalWorkshop');
+        const hiddenInput = modal.querySelector('#workshopInput');
+        if(modalInput) modalInput.value = workshop;
+        if(hiddenInput) hiddenInput.value = workshop;
+    }
+});
+
+// Logo click particle effect and subtle hover glow
+(function(){
+    const logo = document.querySelector('.navbar-brand img');
+    if(!logo) return;
+
+    logo.addEventListener('click', function(e){
+        const rect = this.getBoundingClientRect();
+        const x = rect.left + rect.width/2;
+        const y = rect.top + rect.height/2;
+        for(let i=0;i<12;i++){
+            setTimeout(()=> createParticle(x + (Math.random()-0.5)*20, y + (Math.random()-0.5)*20), i*30);
+        }
+    });
+
+    // subtle glow following mouse over logo
+    logo.addEventListener('mousemove', function(e){
+        this.style.boxShadow = `0 0 30px rgba(0,243,255,0.25), ${(e.clientX - this.getBoundingClientRect().left - this.width/2)*0.2}px ${(e.clientY - this.getBoundingClientRect().top - this.height/2)*0.2}px 20px rgba(0,243,255,0.12)`;
+    });
+
+    logo.addEventListener('mouseleave', function(){
+        this.style.boxShadow = '0 0 12px rgba(0,243,255,0.15)';
+    });
+})();
